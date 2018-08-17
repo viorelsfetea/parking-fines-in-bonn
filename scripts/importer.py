@@ -3,7 +3,7 @@ import psycopg2
 from dateutil.parser import parse
 
 
-file = "../_data/ParkverstoesseBonn2017OpenData_raw.csv"
+file = "../data/ParkverstoesseBonn2017OpenData_raw.csv"
 conn = psycopg2.connect("dbname=bonn user=viorel")
 cur = conn.cursor()
 

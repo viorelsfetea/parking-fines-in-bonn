@@ -3,7 +3,7 @@ import json
 
 conn = psycopg2.connect("dbname=bonn user=viorel")
 cur = conn.cursor()
-file = "../_data/daily_statistics.json"
+file = "../data/daily_statistics.json"
 
 cur.execute("SELECT *, to_char(items.day, 'day') day_name FROM (SELECT date_trunc('day', bonn.parking_fines.time) \"day\", count(*) FROM bonn.parking_fines group by 1 ORDER BY 1) AS items")
 
