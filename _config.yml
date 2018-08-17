@@ -1,1 +1,39 @@
-theme: jekyll-theme-dinky
+# Site settings
+title: Bonn parking fines analysis
+email: viorel.sfetea@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  An analysis of the 2017 parking fines in Bonn, Germany
+baseurl: "" # the subpath of your site, e.g. /newpath-for-emping
+url: "https://viorelsfetea.github.io/parking-fines-in-bonn/" # the base hostname & protocol for your site
+GoogleAnalytics: UA-124192308-1
+
+sass:
+    style: compressed
+
+# Build settings
+markdown: kramdown
+kramdown:
+  parse_block_html: true
+
+gems:
+  - jekyll-redirect-from
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jemoji
+
+defaults:
+    - {scope: {type: posts}, values: {layout: post, permalink: '/blog/:title'}}
+
+include:
+  - _pages
+
+exclude:
+  - CNAME
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+paginate: 12
+paginate_path: '/blog/:num'

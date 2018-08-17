@@ -1,0 +1,23 @@
+<header class="site-header{% if include.avatar %} header-nav{% endif %}">
+    {% unless include.avatar %}<div class="wrapper"><a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>{% endunless %}
+
+    <nav class="site-nav">
+      <div class="trigger">
+        {% for page in site.pages %}
+          {% if page.title and page.navigation %}
+          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </nav>{% if include.avatar %}
+    <div class="wrapper">
+        <div class="author">
+          <a href="{{ site.baseurl | append: '/' }}">
+            <amp-img class="avatar" src="{{ site.baseurl | append:'/assets/avatar.png'}}" width="90" height="90" layout="responsive" alt="{{ site.title }}" ></amp-img>
+            <h1 class="name">{{ site.title }}</h1>
+          </a>
+          <h2 class="description">{{site.description}}</h2>
+        </div>
+    </div>{% endif %}
+  {% unless include.avatar %}</div>{% endunless %}
+</header>
