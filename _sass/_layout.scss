@@ -225,3 +225,14 @@
         float: right;
     }
 }
+
+.two-columns {
+  clear: both;
+  width: 100%;
+
+  .two-columns-column {
+    float: left;
+    margin-right: 5%;
+    width: 45%;
+  }
+}

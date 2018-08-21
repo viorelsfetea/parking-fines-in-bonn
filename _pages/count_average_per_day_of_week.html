@@ -1,0 +1,83 @@
+---
+layout: default
+avatar: false
+title: Total/Average by Day of Week
+permalink: count_average_per_day_of_week
+navigation: true
+---
+
+<h1>
+    Total/Average by Day of Week
+</h1>
+
+<div class="two-columns">
+  <div class="two-columns-column">
+    <h3>
+        Totals by day of week
+    </h3>
+    <div id="chart_div" style="width: 100%; height: 400px;"></div>
+  </div>
+  <div class="two-columns-column">
+    <h3>
+        Averages by day of week
+    </h3>
+    <div id="chart_div_avg" style="width: 100%; height: 400px;"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    var total_fines_data = JSON.parse('[["monday", 25753], ["tuesday", 31511], ["wednesday", 30386], ["thursday", 24724], ["friday", 21690], ["saturday", 10368], ["sunday", 5259]]');
+    var average_fines_data = JSON.parse('[["Monday", 495], ["Tuesday", 606], ["Wednesday", 584], ["Thursday", 475], ["Friday", 417], ["Saturday", 199], ["Sunday", 99]]');
+
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawBasic);
+    google.charts.setOnLoadCallback(drawAvg);
+
+    function drawBasic() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Day of week');
+          data.addColumn('number', 'Total fines');
+
+          data.addRows(total_fines_data);
+
+          var options = {
+            title: 'Total number of fines by day of the week',
+            vAxis: {
+              title: 'Total fines in a day'
+            },
+            hAxis: {
+              title: 'Day of week'
+            }
+          };
+
+          var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div'));
+
+          chart.draw(data, options);
+    }
+
+    function drawAvg() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Day of week');
+          data.addColumn('number', 'Average number of fines');
+
+          data.addRows(average_fines_data);
+
+          var options = {
+            title: 'Average number of fines by day of the week',
+            vAxis: {
+              title: 'Average number of fines'
+            },
+            hAxis: {
+              title: 'Day of week'
+            }
+          };
+
+          var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div_avg'));
+
+          chart.draw(data, options);
+    }
+</script>
