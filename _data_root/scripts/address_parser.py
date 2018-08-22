@@ -11,7 +11,7 @@ with open(file, encoding='utf-8') as csvfile:
 	for row in reader:
 		i += 1
 		
-		address = row[2].replace("Bonn, ", "").replace("Bonn , ", "").replace("Straße", "str.")
+		address = row[2].replace("Bonn, ", "").replace("Bonn , ", "").replace("-", " ").replace("gegenüber Hnr", "")
 		print(address)
 		print(parse_address(address))
 		if i == 1000:

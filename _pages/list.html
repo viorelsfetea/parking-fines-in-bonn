@@ -1,0 +1,43 @@
+---
+layout: default
+avatar: false
+title: List
+permalink: list
+navigation: true
+---
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+<h1>
+	List of fines, grouped by address
+</h1>
+
+<table id="fines_list" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Address</th>
+            <th>Total fines</th>
+            <th>Total money (EUR)</th>
+            <th>Average fine value (EUR)</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Address</th>
+            <th>Total fines</th>
+            <th>Total money (EUR)</th>
+            <th>Average fine value (EUR)</th>
+        </tr>
+    </tfoot>
+</table>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#fines_list').DataTable( {
+	        "ajax": "./assets/data/list.json",
+	        "order": [[ 1, "desc" ]]
+	    } );
+	} );
+</script>
