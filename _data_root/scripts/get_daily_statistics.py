@@ -10,7 +10,7 @@ cur.execute("SELECT *, to_char(items.day, 'day') day_name FROM (SELECT date_trun
 results = []
 
 for result in cur.fetchall():
-	key = "{} ({})".format(result[0].strftime("%d %B"), result[2].strip())
+	key = result[0].strftime("%Y-%m-%d")
 	results.append([key, result[1]])
 
 with open(file, 'w') as outfile:
