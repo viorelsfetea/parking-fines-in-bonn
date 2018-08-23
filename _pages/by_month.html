@@ -1,0 +1,42 @@
+---
+layout: default
+avatar: false
+title: By month
+permalink: by_month
+navigation: true
+---
+    <h1>
+        Distribution by month
+    </h1>
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+
+    <script type="text/javascript">
+        var fines_data = JSON.parse('[["january", 13280], ["february", 10319], ["march", 15024], ["april", 11274], ["may", 13574], ["june", 11415], ["july", 11898], ["august", 11771], ["september", 12868], ["october", 13789], ["november", 13750], ["december", 10729]]');
+
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Month');
+              data.addColumn('number', 'Total fines');
+
+              data.addRows(fines_data);
+
+              var options = {
+                title: 'Fines by month',
+                vAxis: {
+                  title: 'Month',
+                },
+                hAxis: {
+                  title: 'Total fines'
+                }
+              };
+
+              var chart = new google.visualization.ColumnChart(
+                document.getElementById('chart_div'));
+
+              chart.draw(data, options);
+        }
+    </script>
